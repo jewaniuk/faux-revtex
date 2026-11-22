@@ -1,0 +1,32 @@
+% title block: three authors, shared and multiple affiliations, emails, a note,
+% an alternative affiliation, a homepage, preprint numbers and a fixed date.
+% lines end where revtex ends them (\linebreak) and columns are ragged, so the bbox check
+% compares geometry, not line breaking or column filling
+\documentclass[reprint,aps,pra,superscriptaddress,10pt,nofootinbib,nobalancelastpage,preprintnumbers]{revtex4-2}
+\raggedbottom
+\begin{document}
+\preprint{QNL-2026-01}
+\preprint{arXiv:2611.00001}
+\title{A placeholder title that is long enough to wrap onto a second line of the title block}
+\author{Ada Lovelace}
+\email{ada@example.org}
+\thanks{These authors contributed equally.}
+\affiliation{Department of Physics, First University, Kingston, Ontario, Canada}
+\author{Charles Babbage}
+\altaffiliation{Now at Third Laboratory, Third City.}
+\affiliation{Department of Physics, First University, Kingston, Ontario, Canada}
+\affiliation{Second Institute, Second City, Country}
+\author{Emmy Noether}
+\email{emmy@example.org}
+\homepage{https://example.org}
+\affiliation{Second Institute, Second City, Country}
+\date{November 22, 2026}
+\begin{abstract}
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan-\linebreak tium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae\linebreak dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,\linebreak sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+\end{abstract}
+\maketitle
+\section{Introduction}
+Lorem ipsum dolor sit amet, consectetur adipiscing\linebreak elit, sed do eiusmod tempor incididunt ut labore et dolore\linebreak magna aliqua. Ut enim ad minim veniam, quis nostrud\linebreak exercitation ullamco laboris nisi ut aliquip ex ea com-\linebreak modo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit\linebreak esse cillum dolore eu fugiat nulla pariatur. Excepteur sint\linebreak occaecat cupidatat non proident, sunt in culpa qui officia\linebreak deserunt mollit anim id est laborum.
+\end{document}
