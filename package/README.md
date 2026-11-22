@@ -119,7 +119,30 @@ The test suite in the repository builds the same fixtures with revtex4-2 and wit
 - **footnotes**: at the foot of the page, as revtex's `nofootinbib` option (the exporter writes it), not in the reference list
 - **line numbers**: the right column's numbers are on the right and the title block isn't numbered; the numbers are serif (typst bundles no sans)
 - **paragraph indents**: text after a display equation continues the paragraph unindented, even after a blank line; start it with `#h(1em)` if it should be a new paragraph
-- **references**: typst's `american-physics-society` style writes `[1,2]` where revtex writes `[1, 2]`
+- **references**: three upstream bugs in typst's bibliography, with workarounds below
+
+### bibliography workarounds
+
+The package uses typst's built-in `american-physics-society` style and ships no csl of its own (csl styles are cc by-sa 3.0). Until these are fixed upstream, work around them in your own project.
+
+- **`[1,2]` instead of `[1, 2]`**: the upstream style separates citations with `,`, revtex with `, `
+- **`Physical Review a`**: title casing of the journal name lowercases a trailing `A` as if it were the article, a hayagriva bug (title case keeps the last word capitalised)
+- **`022312` printed as `22312`**: typst's bib reader parses pages as integers and drops leading zeros ([typst/biblatex#125](https://github.com/typst/biblatex/issues/125)); no style can fix this
+
+For the first two, copy [american-physics-society.csl](https://github.com/citation-style-language/styles/blob/77c46c415385cd9d68525dbad3bdf86cb5e18260/american-physics-society.csl) into your project, make two edits and point the bibliography at it after `#show: revtex.with(..)`:
+
+```xml
+<!-- citation layout: separator "," becomes ", " -->
+<layout delimiter=", " prefix="&#160;[" suffix="]">
+<!-- journal articles: drop text-case="title" -->
+<text variable="container-title" form="short"/>
+```
+
+```typ
+#set bibliography(style: "american-physics-society.csl")
+```
+
+For leading zeros, either keep references in hayagriva's yaml format (`page-range: '022312'` keeps the zero), or put a word joiner (U+2060, invisible) before the number in the bib file, `pages = {⁠022312}`, so it isn't read as an integer. Add `#show "\u{2060}": none` to keep it out of the pdf's text. pdflatex may reject the character, so a bib shared with latex needs it stripped or declared there.
 
 ## compared with revtyp
 
