@@ -1,0 +1,17 @@
+[package]
+name = "faux-revtex"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Jacob Ewaniuk <https://github.com/jewaniuk>"]
+license = "(MIT OR Apache-2.0) AND MIT-0"
+description = "Physics papers that look like revtex4-2 output."
+repository = "https://github.com/jewaniuk/faux-revtex"
+keywords = ["revtex", "aps", "physical review"]
+categories = ["paper"]
+disciplines = ["physics"]
+compiler = "0.15.0"
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"

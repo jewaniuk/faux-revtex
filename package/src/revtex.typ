@@ -22,7 +22,8 @@
 ///
 /// use it as `#show: revtex.with(..)` for the whole document, or as
 /// `#revtex(..)[..]` once per part (paper, supplement), each starting on a new page
-/// with its figure, table, equation, heading and footnote counters reset.
+/// with its figure, table, equation, heading and footnote counters reset and its page
+/// numbers counted from its first page.
 ///
 /// - title (content): the paper title
 /// - authors (array): one dictionary per author with `name` and optionally
@@ -33,7 +34,8 @@
 ///   in author order
 /// - date (auto, none, content): `auto` prints today, `none` hides the line
 /// - abstract (content, none): the abstract
-/// - preprint (array): preprint numbers, set top right of the first page
+/// - preprint (array): preprint numbers, set top right of the first page (revtex shows
+///   them with the `preprintnumbers` option)
 /// - journal (str): `pra`, `prb`, `prc`, `prd` or `pre`; these print identically in
 ///   revtex, the exporter writes it as the class option
 /// - reprint (bool): two columns (`reprint`) or one column
@@ -85,12 +87,13 @@
       bottom: 11in - text-top - texpt(672),
     ),
     columns: if reprint { 2 } else { 1 },
-    // page numbers top left on even pages, top right on odd ones, none on a part's first page
+    // page numbers top right (revtex is one-sided here), counted from the part's first
+    // page, which has none
     header: context {
-      let n = counter(page).get().first()
-      if n > 1 {
-        if calc.even(n) { align(left)[#n] } else { align(right)[#n] }
-      }
+      let starts = query(<faux-revtex-part>).map(m => m.location().page()).filter(p => p <= here().page())
+      let start = if starts.len() > 0 { starts.last() } else { 1 }
+      let n = here().page() - start + 1
+      if n > 1 { align(right)[#n] }
     },
     header-ascent: texpt(16),
     footer: none,
@@ -170,8 +173,10 @@
   // 20 pt from the text (\textfloatsep)
   set figure(placement: auto)
   set place(clearance: texpt(20))
-  show figure.where(kind: image): set figure(supplement: [FIG.])
-  show figure.where(kind: table): set figure(supplement: [TABLE], numbering: "I")
+  // one set rule (a function of the figure's content), so a plain `set figure(supplement: ..)`
+  // after this still overrides it
+  set figure(supplement: body => if body.func() == table { [TABLE] } else { [FIG.] })
+  show figure.where(kind: table): set figure(numbering: "I")
   show figure.where(kind: table): set figure.caption(position: top)
   // the table body is 9 pt like the caption
   show figure.where(kind: table): set text(size: texpt(9))
@@ -217,6 +222,7 @@
 
   // a part starts on its own page with fresh counters
   pagebreak(weak: true)
+  [#metadata(none) <faux-revtex-part>]
   for c in (figure.where(kind: image), figure.where(kind: table), math.equation, heading, footnote) {
     counter(c).update(0)
   }
