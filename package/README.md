@@ -37,7 +37,7 @@ Start a new project from the template with `typst init @preview/faux-revtex:0.1.
 `revtex` also works on one part at a time. Each part starts on a new page with its own figure, table, equation, heading, footnote and page numbers:
 
 ```typ
-#revtex(title: [The paper], ..)[ ... ]
+#revtex(title: [The paper], abstract: [...])[ ... ]
 #revtex(title: [Supplementary material], reprint: false)[ ... ]
 ```
 
