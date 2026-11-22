@@ -1,4 +1,4 @@
-# revtypst
+# faux-revtex
 
 code mode: agent
 git mode: main
