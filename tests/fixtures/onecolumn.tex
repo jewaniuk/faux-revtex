@@ -1,0 +1,20 @@
+% one column (no reprint, as for supplements): two authors, one without an affiliation,
+% a heading, a footnote and text. lines end where revtex ends them (\linebreak) and the
+% page is ragged, so the bbox check compares geometry, not line breaking
+\documentclass[aps,pra,superscriptaddress,10pt,nofootinbib]{revtex4-2}
+\raggedbottom
+\begin{document}
+\title{Supplementary material}
+\author{Ada Lovelace}
+\affiliation{Department of Physics, First University}
+\author{Alan Turing}
+\noaffiliation
+\date{November 22, 2026}
+\maketitle
+\section{Further results}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore\linebreak magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\linebreak consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\footnote{A footnote in one column.}
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed\linebreak ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,\linebreak eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+\subsection{Details}
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores\linebreak eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,\linebreak consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam\linebreak quaerat voluptatem.
+\end{document}

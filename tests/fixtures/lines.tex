@@ -1,0 +1,52 @@
+% line numbers: the text fixture with the `linenumbers` option. revtex numbers the title block
+% and puts the right column's numbers on the left; typst doesn't (accepted), so by eye only
+\documentclass[reprint,aps,pra,superscriptaddress,10pt,nofootinbib,nobalancelastpage,linenumbers]{revtex4-2}
+\raggedbottom
+\begin{document}
+\title{Headings, equations and an appendix}
+\author{Ada Lovelace}
+\affiliation{Department of Physics, First University}
+\date{November 22, 2026}
+\begin{abstract}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\linebreak labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris\linebreak nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit\linebreak esse cillum dolore eu fugiat nulla pariatur.
+\end{abstract}
+\maketitle
+\section{Introduction}
+Excepteur sint occaecat cupidatat non proident, sunt\linebreak in culpa qui officia deserunt mollit anim id est laborum.\linebreak Sed ut perspiciatis unde omnis iste natus error sit volup-\linebreak tatem accusantium doloremque laudantium, totam rem\linebreak aperiam, eaque ipsa quae ab illo inventore veritatis et\linebreak quasi architecto beatae vitae dicta sunt explicabo.
+
+Nemo enim ipsam voluptatem quia voluptas sit asper-\linebreak natur aut odit aut fugit, sed quia consequuntur magni do-\linebreak lores eos qui ratione voluptatem sequi nesciunt. Neque\linebreak porro quisquam est, qui dolorem ipsum quia dolor sit\linebreak amet, consectetur, adipisci velit, sed quia non numquam\linebreak eius modi tempora incidunt ut labore et dolore magnam\linebreak aliquam quaerat voluptatem.\footnote{A footnote at the foot of the page, long enough to need a second\linebreak line of text.}
+
+\section{Theory}\label{sec:theory}
+Ut enim ad minima veniam, quis nostrum exercita-\linebreak tionem ullam corporis suscipit laboriosam, nisi ut aliq-\linebreak uid ex ea commodi consequatur. Quis autem vel eum\linebreak iure reprehenderit qui in ea voluptate velit esse quam\linebreak nihil molestiae consequatur, vel illum qui dolorem eum\linebreak fugiat quo voluptas nulla pariatur.
+\begin{equation}
+E = m c^2 + \sum_{n=1}^{N} \frac{p_n^2}{2 m_n} .
+\label{eq:energy}
+\end{equation}
+At vero eos et accusamus et iusto odio dignissimos\linebreak ducimus qui blanditiis praesentium voluptatum deleniti\linebreak atque corrupti quos dolores et quas molestias excepturi\linebreak sint occaecati cupiditate non provident, similique sunt in\linebreak culpa qui officia deserunt mollitia animi, id est laborum\linebreak et dolorum fuga.
+
+\subsection{A subsection}
+Et harum quidem rerum facilis est et expedita distinc-\linebreak tio. Nam libero tempore, cum soluta nobis est eligendi\linebreak optio cumque nihil impedit quo minus id quod maxime\linebreak placeat facere possimus, omnis voluptas assumenda est,\linebreak omnis dolor repellendus.
+
+See Eq.~(\ref{eq:energy}) and Sec.~\ref{sec:theory}.
+
+\subsubsection{A subsubsection}
+Temporibus autem quibusdam et aut officiis debitis aut\linebreak rerum necessitatibus saepe eveniet ut et voluptates repu-\linebreak diandae sint et molestiae non recusandae. Itaque earum\linebreak rerum hic tenetur a sapiente delectus, ut aut reiciendis\linebreak voluptatibus maiores alias consequatur aut perferendis\linebreak doloribus asperiores repellat.
+
+Praeterea libero tempore, cum soluta nobis est eligendi\linebreak optio cumque nihil impedit quo minus id quod maxime\linebreak placeat facere possimus. Omnis voluptas assumenda est,\linebreak omnis dolor repellendus, temporibus autem quibusdam et\linebreak aut officiis debitis aut rerum necessitatibus saepe eveniet.
+
+\begin{acknowledgments}
+We thank the referees for their comments.
+\end{acknowledgments}
+
+\appendix
+\section{Derivation}\label{app:derivation}
+Totam rem aperiam, eaque ipsa quae ab illo inven-\linebreak tore veritatis et quasi architecto beatae vitae dicta sunt\linebreak explicabo. Nihil enim ipsam voluptatem quia voluptas\linebreak sit aspernatur aut odit aut fugit, sed quia consequuntur\linebreak magni dolores eos qui ratione voluptatem.
+\begin{equation}
+\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0} .
+\label{eq:gauss}
+\end{equation}
+See Eq.~(\ref{eq:gauss}) and Appendix~\ref{app:derivation}.
+
+\subsection{A subsection of the appendix}
+Denique porro quisquam est, qui dolorem ipsum quia\linebreak dolor sit amet, consectetur, adipisci velit. Ita enim ad\linebreak minima veniam, quis nostrum exercitationem ullam cor-\linebreak poris suscipit laboriosam, nisi ut aliquid ex ea commodi\linebreak consequatur, quis autem vel eum iure reprehenderit.
+\end{document}

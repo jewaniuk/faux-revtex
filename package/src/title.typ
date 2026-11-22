@@ -52,7 +52,9 @@
   let missing = order.filter(key => key not in affiliations)
   assert(missing.len() == 0, message: "affiliations without an entry: " + missing.join(", "))
 
-  place(top + center, scope: "parent", float: true, clearance: texpt(31.25 - 10), block(width: 100%, {
+  // the body's first baseline sits 31.25 pt below the abstract's last (38.75 below the date
+  // without an abstract), less the 10 pt the first line takes above its baseline
+  place(top + center, scope: "parent", float: true, clearance: texpt(31.25 - 10 + if abstract == none { 7.5 } else { 0 }), block(width: 100%, {
     if preprint.len() > 0 {
       // revtex sets these at the head baseline, right aligned, one per line (or one line past two)
       let numbers = if preprint.len() > 2 { preprint.join(", ") } else { preprint.join(linebreak()) }

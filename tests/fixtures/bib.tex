@@ -1,0 +1,14 @@
+% citations and the bibliography: one, two and a range of references, a book.
+% columns are ragged (typst can't stretch vertical space)
+\documentclass[reprint,aps,pra,superscriptaddress,10pt,nofootinbib,nobalancelastpage]{revtex4-2}
+\raggedbottom
+\begin{document}
+\title{Citations and references}
+\author{Ada Lovelace}
+\affiliation{Department of Physics, First University}
+\date{November 22, 2026}
+\maketitle
+\section{Introduction}
+One reference \cite{Gisin:07}, two \cite{Gisin:07, Raussendorf:03} and a range \cite{Gisin:07, Raussendorf:03, Grover:97}. A book \cite{Nielsen:10}.
+\bibliography{references}
+\end{document}
